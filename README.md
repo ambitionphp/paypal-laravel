@@ -1,8 +1,6 @@
 PayPal Laravel
 =============
-> A Laravel 5 wrapper for PayPal
-
-[![Total Downloads](https://img.shields.io/packagist/dt/pulkitjalan/paypal-laravel.svg?style=flat-square)](https://packagist.org/packages/pulkitjalan/paypal-laravel)
+> A Laravel 6 wrapper for PayPal
 
 ## Requirements
 
