@@ -4,6 +4,8 @@ namespace PulkitJalan\PayPal;
 
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Rest\ApiContext;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 class PayPal
 {
@@ -40,10 +42,10 @@ class PayPal
             $this->apiContext = new ApiContext($this->getCredentials($id, $secret));
 
             $config = array_merge([
-                'mode' => array_get($this->config, 'mode', 'sandbox'),
-                'log.LogEnabled' => array_get($this->config, 'log.enabled', false),
-                'log.FileName' => storage_path('logs/'.array_get($this->config, 'log.file', 'laravel.log')),
-                'log.LogLevel' => array_get($this->config, 'log.level', 'DEBUG'),
+                'mode' => Arr::get($this->config, 'mode', 'sandbox'),
+                'log.LogEnabled' => Arr::get($this->config, 'log.enabled', false),
+                'log.FileName' => storage_path('logs/'.Arr::get($this->config, 'log.file', 'laravel.log')),
+                'log.LogLevel' => Arr::get($this->config, 'log.level', 'DEBUG'),
             ], $config);
         }
 
@@ -63,8 +65,8 @@ class PayPal
     public function getCredentials($id = null, $secret = null)
     {
         return new OAuthTokenCredential(
-            $id ?: array_get($this->config, 'client_id'),
-            $secret ?: array_get($this->config, 'client_secret')
+            $id ?: Arr::get($this->config, 'client_id'),
+            $secret ?: Arr::get($this->config, 'client_secret')
         );
     }
 
@@ -80,7 +82,7 @@ class PayPal
      */
     public function __call($method, $parameters)
     {
-        $api = 'PayPal\Api\\'.studly_case($method);
+        $api = 'PayPal\Api\\'.Str::studly($method);
 
         if (class_exists($api)) {
             $class = new \ReflectionClass($api);
