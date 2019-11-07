@@ -3,6 +3,7 @@
 namespace PulkitJalan\PayPal;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Arr;
 
 class PayPalServiceProvider extends ServiceProvider
 {
@@ -33,7 +34,7 @@ class PayPalServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(PayPal::class, function ($app) {
-            return new PayPal(array_get($app['config'], 'services.paypal'));
+            return new PayPal(Arr::get($app['config'], 'services.paypal'));
         });
     }
 
