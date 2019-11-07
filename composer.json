@@ -1,7 +1,7 @@
 {
-  "name": "pulkitjalan/paypal-laravel",
+  "name": "ambitionphp/paypal-laravel",
   "description": "A Laravel 5 wrapper for PayPal",
-  "homepage": "https://github.com/pulkitjalan/paypal-laravel",
+  "homepage": "https://github.com/ambitionphp/paypal-laravel",
   "keywords": ["paypal", "laravel"],
   "license": "MIT",
   "authors": [
